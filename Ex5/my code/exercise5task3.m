@@ -1,0 +1,13 @@
+I=imread('miranda1.tif');
+noise=zeros(size(I));
+noise(151:250,151:250)=50*rand(100,100);
+Inoise=I+uint8(noise);
+sizeoffilter=5;
+alpha=100;
+O=med_filter(Inoise,sizeoffilter,alpha);
+figure
+imshow(I)
+figure
+imshow(Inoise)
+figure
+imshow(O)

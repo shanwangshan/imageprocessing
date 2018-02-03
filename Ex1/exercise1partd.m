@@ -1,0 +1,29 @@
+%names={'c_1.jpg','c_2.jpg','c_3.jpg','c_4.jpg','c_5.jpg','c_6.jpg'};
+prefix='c_';
+suffix='.jpg'
+for k=1:6
+    names=strcat(prefix,num2str(k),suffix);
+    I=imread(names);
+   
+    J=imresize(I,0.75);
+    [a,b,c]=size(I);
+    Br=I(:,b/2:b,1);
+    Bg=I(:,b/2:b,2);
+    Bb=I(:,b/2:b,3);
+    B=cat(3,Br,Bg,Bb);
+    S=fliplr(I);
+    Sr=S(:,1:b/2,1);
+    Sg=S(:,1:b/2,2);
+    Sb=S(:,1:b/2,3);
+    S=cat(3,Sr,Sg,Sb);
+    S=[S,B];
+    C=imrotate(S,90);  
+    figure
+    imshow(I)
+     figure
+    imshow(J)
+    figure
+    imshow(S)
+     figure
+    imshow(C)
+end
